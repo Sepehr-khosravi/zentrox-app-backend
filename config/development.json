@@ -1,5 +1,5 @@
 {
-    "PORT" : 5000 ,
-    "dbAddress" : " mongodb://127.0.0.1:27017/sponseBackend" ,
+    "PORT" : 8080 ,
+    "dbAddress" : " mongodb+srv://teamdeveloper089_db_user:<db_password>@cluster0.pbdc8dn.mongodb.net/" ,
     "jwtKey" : "ksajfklj3sdfj4ngj493jpoaskdfmlm3irn239j1lasx;casdf"
 }
