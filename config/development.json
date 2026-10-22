@@ -1,0 +1,5 @@
+{
+    "PORT" : 5000 ,
+    "dbAddress" : " mongodb://127.0.0.1:27017/sponseBackend" ,
+    "jwtKey" : "ksajfklj3sdfj4ngj493jpoaskdfmlm3irn239j1lasx;casdf"
+}
