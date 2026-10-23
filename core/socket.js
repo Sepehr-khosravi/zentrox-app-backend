@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
+const dotenv = require("dotenv");
+dotenv.config();
 const { userModel, conversationModel, textMessageModel } = require("../src/models/index");
 
 
@@ -14,7 +16,7 @@ module.exports = function (io) {
             const { token } = socket.handshake.auth;
             if (!token) return next(new Error("No token"));
 
-            const jwtKey = config.get("jwtKey");
+            const jwtKey = process.env.JWT_KEY;
             const decoded = jwt.verify(token, jwtKey);
             const user = await userModel.findById(decoded.userId);
             if (!user) return next(new Error("User not found"));
