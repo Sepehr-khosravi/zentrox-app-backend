@@ -136,7 +136,7 @@ class Auth {
     verifyToken = async (req, res) => {
         try {
             const { token } = req.body;
-            const decode = await jwt.verify(token, process.env.JWT_KEY | "1234");
+            const decode = await jwt.verify(token, process.env.JWT_KEY);
             if (!decode) {
                 res.status(200).json({ message: "user not found", data: null, error: true });
                 return;
@@ -160,7 +160,7 @@ class Auth {
             const salt = await bcrypt.genSalt(10);
             const hashPassword = await bcrypt.hash(password, salt);
             const newUser = await userModel.create({ name: name, email: email, password: hashPassword });
-            const token = await jwt.sign({ userId: newUser.id }, process.env.JWT_KEY | "1234");
+            const token = await jwt.sign({ userId: newUser.id }, process.env.JWT_KEY);
             res.status(200).json({ message: "successfuly to register", data: { name: newUser.name, email: newUser.email, token: token } });
         }
         catch (e) {
@@ -207,7 +207,7 @@ class Auth {
                 res.status(400).json({ message: "invalid email or password", error: "invalid email or password", data: {} });
                 return;
             }
-            const token = await jwt.sign({ userId: user.id }, process.env.JWT_KEY | "1234");
+            const token = await jwt.sign({ userId: user.id }, process.env.JWT_KEY);
             res.status(200).json({ message: "successfuly to login", data: { name: user.name, email: user.email, token: token } });
         }
         catch (e) {

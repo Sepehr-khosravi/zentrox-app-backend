@@ -4,7 +4,7 @@ const dotnev = require("dotenv");
 dotnev.config();
 
 //for starting data base:
-mongoose.connect(process.env.DATABASE_URL | "")
+mongoose.connect(process.env.DATABASE_URL)
     .then(() => {
         console.log("server is connected to the database");
     })

@@ -29,6 +29,8 @@ const AuthRouter = require("./auth");
 //for checking the user (token and info :) : 
 const jwt = require("jsonwebtoken");
 const config = require("config");
+const dotenv = require("dotenv");
+dotenv.config();
 Router.get("/checkUser", async (req, res) => {
     try {
         const auth = req.headers["auth-token"];
@@ -37,7 +39,7 @@ Router.get("/checkUser", async (req, res) => {
             res.status(200).json({ message: "please login or register!", isLogin: false });
             return;
         }
-        const decode = jwt.verify(token, process.env.JWT_KEY | "1234");
+        const decode = jwt.verify(token, process.env.JWT_KEY);
         if (!decode || !decode.userId) {
             res.status(200).json({ message: "please login or register!", isLogin: false });
             return;
