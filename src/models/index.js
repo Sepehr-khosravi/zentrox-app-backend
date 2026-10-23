@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
-const config = require("config");
+// const config = require("config");
+const dotnev = require("dotenv");
+dotnev.config();
 
 //for starting data base:
-mongoose.connect("mongodb://localhost:27017/sponsBackend")
+mongoose.connect(process.env.DATABASE_URL | "")
     .then(() => {
         console.log("server is connected to the database");
     })

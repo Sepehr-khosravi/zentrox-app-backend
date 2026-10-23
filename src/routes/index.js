@@ -37,7 +37,7 @@ Router.get("/checkUser", async (req, res) => {
             res.status(200).json({ message: "please login or register!", isLogin: false });
             return;
         }
-        const decode = jwt.verify(token, config.get("jwtKey"));
+        const decode = jwt.verify(token, process.env.JWT_KEY | "1234");
         if (!decode || !decode.userId) {
             res.status(200).json({ message: "please login or register!", isLogin: false });
             return;
